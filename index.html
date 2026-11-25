@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FabYield: semiconductor process costing</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="wordmark" href="#main">FabYield</a>
+    <button class="btn" type="button" id="print">Print report</button>
+  </header>
+
+  <main id="main">
+    <section class="summary" aria-labelledby="h-summary">
+      <div class="block">
+        <h1 id="h-summary">Cost per good chip</h1>
+        <span class="figure" data-out="perChip"></span>
+        <p data-out="summaryText"></p>
+      </div>
+      <dl class="facts" data-out="facts"></dl>
+    </section>
+
+    <section id="inputs" aria-labelledby="h-inputs">
+      <header>
+        <h2 id="h-inputs">Inputs</h2>
+        <p>One month of production. The figures supplied are illustrative, not from a real fab. Change any of them and every account below recalculates.</p>
+      </header>
+      <form id="form" novalidate>
+        <div class="groups" id="general"></div>
+        <div class="groups three" id="stages"></div>
+        <div class="live" id="live">
+          <output id="status" aria-live="polite"></output>
+          <button class="btn" type="button" id="reset">Restore example</button>
+        </div>
+      </form>
+    </section>
+
+    <section aria-labelledby="h-accounts">
+      <header>
+        <h2 id="h-accounts">Process accounts</h2>
+        <p>Normal loss is worth only its scrap value, so good units carry its cost. Abnormal loss and gain are valued like good units and leave the process account for profit and loss. There is no opening or closing work in progress.</p>
+      </header>
+      <div class="block accounts" data-out="accounts"></div>
+      <div class="block ledgers" data-out="ledgers"></div>
+    </section>
+
+    <section aria-labelledby="h-chip">
+      <header>
+        <h2 id="h-chip">How the cost builds up</h2>
+        <p>Process cost absorbs normal loss only. The all-in figure adds the net abnormal loss, which shows what each good chip cost the business but is not used to value stock.</p>
+      </header>
+      <div class="block" data-out="buildup"></div>
+      <figure class="wafer" data-out="wafer"></figure>
+    </section>
+
+    <section aria-labelledby="h-std">
+      <header>
+        <h2 id="h-std">Standard against actual yield</h2>
+        <p>Variances compare actual cost with the standard allowed for the good chips produced. F is favourable and A is adverse.</p>
+      </header>
+      <div class="block" data-out="yieldTable"></div>
+      <div class="block" data-out="waferUsage"></div>
+      <div class="block" data-out="matUsage"></div>
+      <div class="block" data-out="variances"></div>
+    </section>
+
+    <section aria-labelledby="h-pl">
+      <header>
+        <h2 id="h-pl">Impact on profit and loss</h2>
+        <p>The same month under two methods. Process costing charges the yield shortfall as abnormal loss. Standard costing charges it through variances. Charging both in one statement would count the same lost wafers twice.</p>
+      </header>
+      <div class="block" data-out="pl"></div>
+      <div class="block" data-out="recon"></div>
+      <div class="block" data-out="impact"></div>
+    </section>
+  </main>
+
+  <footer class="foot"><p>FabYield. Illustrative data, amounts in rupees, calculated unrounded and rounded for display.</p></footer>
+
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
